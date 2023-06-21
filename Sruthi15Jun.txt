@@ -6,3 +6,6 @@ Private : we can access this only with in same class but not from outside the cl
 protected : variables of protected access modifiers can be accessed in the same package and also from outside the package with the help of child class. If we do not create child class, we cannot access it from outside the package.
 	So, here comes the concept of inheritance and is must for accessing it from outside the package.
 Default: we can access this only with in same package and not from outside the package and also if we wont specify any access modifier it will automatically consider it as default.
+
+
+Polymorphism notes :
