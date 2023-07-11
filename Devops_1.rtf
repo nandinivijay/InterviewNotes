@@ -59,7 +59,10 @@ Git branch \'97merged\
 12)what is git stashing?\
 \
 13)when do you use git stash?\
-       Inorder to prevent the merge conflicts we use git stash.This command saves the local modifications away and reverts the working directory to match the HEAD commit.\
+       Inorder to prevent the merge conflicts we use git stash.This command takes uncommitted changes(both staged and unstaged),saves them away for later use, then reverts them from your working copy.\
+   To get previously stashed changes we use git stash pop\
+    Popping your stash removes the changes from your stash and reapplies to working copy.\
+   git stash apply-reapply changes to the working copy and keep them in your stash too.This is useful if we want to apply the same stashed changes to multiple branches.\
 \
 \
 14)Difference between git merge vs git rebase\
