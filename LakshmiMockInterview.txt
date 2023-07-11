@@ -1,0 +1,51 @@
+HTTP methods play important roles in webservicetesting.
+
+GET: this method is used for retrev the data from server.
+the status code will be 200 which is meant by OK or Successful.
+for eample if we want to access www.example.com then the server will return the webpage
+successfully then the status code is 200;
+
+POST:POST request can be used for create the new resourses in the server.
+Post is the not idempotent,because whenever we calling the post request multiple times it has the sideeffcts for creating the same resources multiple times.
+For sending POST request we have send request payload.
+the status code will be 201 and 202.
+sending post request succefuuly it will reponse 201 and if resourse create succfully the reponse code will be 202. 
+
+PUT: Put request is used for update the existing resource,it will update the entire resource.
+PUT is idempotent, because whenever we call PUT request multiple times it will give the same result.
+PUT request usally respond with success code 200 when it is successful.
+
+PATCH:PATCH request is used for update or modify the resources partially. .
+
+DELETE: This request is used for delete the resources from the seever.
+so the repose code for DELET rquest will be 204.
+
+ 2) What is page object model? How do you implement in selenium?
+
+As per page object model,every webpage of the application has corresponding page class , which are responsible for 
+locating the  webelements and perform certain actions.
+Page Object Model is basically a design pattern which helps to create object repositories which improves code redability
+and reusablity. We can run some tests object repositories.
+
+In Seleinium, as per PageObjectModel we will be  creating  classes for each webpage in java, and that classes holds the functionality and members of that particular page.
+ Which can be intialized by the constructor, and each page classes have corresponding   tests class which are maintained ins separate package.
+we can call the methods of page class in tests.
+ Page factory is subversion of Page Object Model, where we will be creating annotations like @ FindBy and @FindAll for locating the webelements
+and also we will be intilising those webpages in test class using the init method.
+
+3)What is Datadriven testing? and how would you implement datadriven testing in your project?
+
+ to  Test the  scenarios or tests with multiple sets of data is called DataDrivenTesing.
+We have a automation framework for regression testing,where we impliment the datadriven tesing through Apache POI jars to integrate selenium test scripts with excel sheet. 
+in order to read the data from the excel sheet we have used Apachi POI jars in Maven project. That actually make selenium call the excel sheets and read the data from that.
+ datadriven testing can also be acheived through Json as the dataprovider by adding gson dependcy.
+we can also acheive the datadriven in TestNG in two ways 1) by providing parameters in testng.xmal and  2)@Dataprovider annotation.
+and also acheive data driven teting in cucumber by Scenario Outline with Examples keyword.
+if we want the data for particular Scenario then we will be using DataTable.
+ 
+4) What are the test Delivarables? 
+Test deliverables are nothing but documents preparing after testing like test plan document, test case template, bug report template.
+Test deliverables will be delivered to the client not only for the completed activities, but also for the activities, which we are implementing for the better productivity.
+1. QA test Plan 2.Test case Docs 3. QA Test plan, if we are using Automation. 4. Automation scripts 5. QA Coverage Matrix and defect matrix. 6. Traceability Matrix 7. Test Results doc 8. QA Schedule doc (describes the deadlines) 9. Test Report or Project Closure Report. (Prepared once we rolled out the project to client) 10. Weekly status report (sent by PM to the client) 11. Release Notes.   
+ 
+
