@@ -1,0 +1,187 @@
+----A program to find the most occurance characters in a string
+
+import org.testng.annotations.Test;
+
+public class MostOccurance {
+	
+	public void maximumLetters(String str) {
+		int count[] = new int[256]; 
+		int maxcount=0,temp=0;
+		char ch=' ';
+		for(int i=0;i<str.length();i++)
+		{
+			count[str.charAt(i)]++;
+		}
+		for(int i=0;i<str.length();i++)
+		{
+			int c=0;
+			for(int j=0;j<=i;j++)
+			{
+				if(str.charAt(i)==str.charAt(j))
+				{
+					c++;
+				}
+			}
+			if(c==1 )
+			{
+				temp = count[str.charAt(i)];
+				if(maxcount<temp)
+				{
+					maxcount = temp;
+					ch = str.charAt(i);
+				}
+			}
+		}
+		System.out.println("Maximum occurance Letter in "+ str+" is "+ch+" and its count value is "+maxcount);
+	}
+	@Test
+	public void maxOccurance()
+	{
+		maximumLetters("this is my program ");
+		maximumLetters("Java is a Programming Language");
+	}
+}
+
+
+
+-----Explain how synchronization is achieved in selenium?
+ Synchronization is a process of coordination of testing the webelements and is the capability to control the access of multiple threads to any shared resource.
+In Selenium it is achieved basically through waits such as implicit,explicit wait and fluent wait.
+
+Implicit wait directs the Selenium webDriver to wait for certain measure of time before throwing an exception.
+
+By using the Explicit Wait command, the WebDriver is directed to wait until a certain condition occurs before proceeding with executing the code.
+
+Fluent Wait in Selenium wait for the maximum amount of time for Selenium WebDriver to wait for a certain condition (web element) becomes visible. It also defines how frequently WebDriver will check if the condition appears before throwing the “ElementNotVisibleException”.
+
+In order to above waits we can achieve synchronization by using pageLoadTimeout which sets the time to wait for a page to load completely before throwing an error. If the timeout is negative, page loads can be indefinite.
+
+ScriptLoadTimeOuts, which is an exception raised when an operation runs out after a specified period.
+
+
+-----Explain CucumberOptions in detail?
+Cucumber options: Defined in runner class
+1.dryRun
+2.features
+3.glue
+4.monochrome
+5.format
+6.strict
+7.Plugin
+8.tags
+
+Tags are defined in feature file and included in cucumber options.
+ 
+1.DryRun-to check mapping is fine between feature and step definition file
+dryrun =false(by default dry run =false)by making dry run =true it means cucumber will check the steps mentioned  in the feature file have  corresponding code in the step definition file by making dry run =true all the tests will be skipped . <It will check mapping is proper between feature File and stepdefinition file>
+
+2.Features: Features Options helps Cucumber to locate the Feature file in the project folder structure.All we need to do is to specify the folder path and Cucumber will automatically find all the ‘.features‘ extension files in the folder.												
+
+
+3.glue-is used to locate the path of step definition files
+
+4.monochrome-display the console output in the readable format
+ monochrome=true
+
+5.format-output report in proper format,type of output(html/json/xml)
+ format={pretty,json:json_output/cucumber.json,junit:junit_xml/cucumber.xml}
+
+6.strict-It will fail executions if there are any undefined/pending execution
+Ex.Throws error incase if the method/step definition is missing.
+strict =false by making strict =false then at the execution time if any steps is not defined or pending then it will skipnthose undefined steps and the build will be success												
+strict=true by making strict=true if the steps are not defined in the stepdefinition file the stepdefintionfile then it will fail the test  and biuld will fail					<it will check if any steps is not defined in stepdefinition file>							
+
+7.plugin =pretty it will generate the pretty ouput  and wecan generate either json,html or junit.
+If we write plugin="rerun" it will rerun the falied testcases.
+
+8.Tags-in feature file segregate the scenarios based on type of tests like
+
+@FunctionalTest
+Feature:Free crm application  
+@SmokeTest @RegressionTest @End2End
+Scenario: Login into url
+Given: Login into url url
+
+and add below line of code in testrunner file.
+tags={“@SmokeTest,@RegressionTest”}  --executes all tests tagged as smoke test OR regression tests(ORed)
+
+tags={“@SmokeTest”,”@RegressionTest”} --executes all tests tagged as smoke test AND regression tests(ANDed)
+
+Incase if we want to ignore one particular type of test, add tilt(~) in tags before the test(smoke test excluded)
+tags={“~@SmokeTest”,”@RegressionTest”}
+
+If both the tags are ignored than the other tags will be executed.
+
+-----What is testplan? what are the contents of a test plan document?
+A test plan for software project can be defined as a document that defines the scope, objective, approach and emphasis on a software testing effort.
+Contents of Test plan include- Test plan id, features to be tested, test techniques, testing tasks, features pass or fail criteria, test deliverables, responsibilities, and schedule, etc.
+Test plan is carried out by a testing manager or lead that describes how to test, when to test, who will test and what to test.Test plan narrates about the specification
+Test plan can change.Test planning is done to determine possible issues and dependencies in order to identify the risks.A test plan exists individually and it is defined at project level.
+
+-----How do you handle communication & coordination with developers during testing?
+By attending daily stand up meeting which is used to discuss the work completed the previous day, the planned work for the next day and issues faced 
+while during their  work.
+By providing early feedback by using PMTool we can send comments in comments section.
+By attaching proper screenshots which is used to identify potential defect with clarity.
+
+
+-----What are Enums in java and have you used any enums in your current project ?
+An enum is used  to define a constant set of values. For example, the days of the week can be defined as an enumeration and used anywhere in the program.The Enums are constants, by default they are static and final so the names of an enum type fields are in uppercase letters.
+
+
+//I have used enums in my project to define all browser names supporting in framework
+Ex :enum BrowserNames {
+	CHROME,FIREFOX
+}
+public class WithEnum {
+private WebDriver launchBrowserSwitch(BrowserNames browserName) {
+		WebDriver driver = null;
+		switch (browserName) {
+		case CHROME:
+			WebDriver driver = new ChromeDriver();
+			break;
+		case FIREFOX:
+			WebDriver driver = new FirefoxDriver();
+			break;
+		}
+		
+		return driver;
+	}
+@Test
+	public void googleTestFirefox()
+	{
+		WebDriver driver = launchBrowserSwitch(BrowserNames.FIREFOX);
+		driver.get("https://www.google.com");
+		driver.close();
+	}
+}
+
+also I have used enum for Waits
+ ex:   driver.manage().timeUnit().implicitlywait(10,timeUnit.SECONDS);//timeUNit.MINUTES
+I have  used enums for keys Actions like
+       Keys.ARROW_DOWN,Keys.ARROW_UP,Keys.ARROW_LEFT,Keys.ARROW_RIGHT,Keys.BACK_SPACE,Keys.CONTROL,Keys.ALT
+	Keys.DELETE	Keys.ENTER
+	Keys.SHIFT	Keys.SPACE Keys.TAB Keys.EQUALS Keys.ESCAPE Keys.HOME
+I have used enum to define type of user like admin,guest or normal user
+Ex: public class ExampleTest {
+    enum UserRole {
+        ADMIN,
+        USER,
+        GUEST
+    }
+    @Test
+    public void loginTest() {
+        // Set the user role to be used in the test
+        UserRole userRole = UserRole.ADMIN;
+        // Perform login based on the user role
+        if (userRole == UserRole.ADMIN) {
+            // Perform admin login
+        } else if (userRole == UserRole.USER) {
+            // Perform user login
+        } else if (userRole == UserRole.GUEST) {
+            // Perform guest login
+        }
+        // Assertion and verification steps...
+    }
+}
+and I used enum in PageFactoryClass also 
