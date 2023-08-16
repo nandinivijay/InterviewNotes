@@ -1,0 +1,40 @@
+UNIX COMMANDS 
+
+
+1)  ls    is used to get the list of files in a directory.
+2)  Whoami    is used to know who is logging to the system ( like Admin name etc )
+3)  Pwd    gives the environment you are currently on
+4)  ls -R   shows the files which are not only in the directory but also files from the sub directory
+5)  ls -al   it gives all information in a tabular/column format
+	In this,
+		1st column gives file type and access permissions
+		2nd column gives hard links of the file
+		3rd column gives owner who created the file
+		4th column gives group of honors
+		5th column gives size of file (in bytes)
+		6th column gives date and time
+		7th column gives directory/file name
+6)  ls -a   is used if you want to see any hidden files
+7)  cat>first.txt   is used to create a new file
+8)  cat first.txt   is used to view the content present in the file
+9)  rm first.txt   is used to delete the file
+10) mkdir firstfolder   is used to create a folder/directory
+11) cd firstfolder   if you want to go into particular directory
+12) cat>second.txt   used to create a file in particular folder(firstfolder)
+13) ctrl + d is used to return to directory
+14) cat second.txt   is used to view the file
+15) rm second.txt   is used to delete/remove the file
+16) rmdir firstfolder   is used to remove the directory. For this we have to come out of folder first and delete ( Ex : cd firstfolder)
+17) mv first second   is used to rename particular directory. For this we have to come out of folder and rename
+		If you want to install any kind of softwares we have to use “yum” command.
+		Ex: if you want to install maven 
+			sudo yum install -y apache-maven  this command will install maven
+		In order to check whether software is installed or not we can use 
+		mvn -version command and check
+18) chmod   is used to change the permissions of file and directory
+		Ex : chmod rwx gives permission for reading, writing and executing
+		     Chmod u+rwx,g+rx,o-w <filename.txt>  it will gives permissions for users as read,write and execute,for group as read and write and for others it won't allow to write 
+19) echo   is used to print something you want 
+		For ex : if you want to print the path of java home you can write as 
+		Echo $JAVA_HOME
+ 
